@@ -30,18 +30,17 @@ public class FallingEnemy : BaseEnemy
         
     }
 
+
+
+    //new void overrides old one
+
     /*
-    private void OnCollisionEnter(Collision collision)
+    private new void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bottom")
         {
             Debug.Log("Bottom");
             transform.position = new Vector3(transform.position.x, 18, 0);
-        }
-
-        if (collision.gameObject.tag == "Bullet")
-        {
-            //Debug.Log("Bullet");
         }
     }
     */
