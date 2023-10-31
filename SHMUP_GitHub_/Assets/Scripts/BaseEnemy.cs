@@ -20,11 +20,16 @@ public class BaseEnemy : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
             Debug.Log("Bullet");
+            health = -1;
+            if(health <= 0)
+            {
+                Debug.Log("Destroy");
+            }
         }
     }
 

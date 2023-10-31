@@ -17,7 +17,7 @@ public class SpawnerEnemy : BaseEnemy
         transform.Translate(new Vector2(speed, 0) * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private new void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "SideWall")
         {

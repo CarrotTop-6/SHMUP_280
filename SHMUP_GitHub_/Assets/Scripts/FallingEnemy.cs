@@ -30,6 +30,7 @@ public class FallingEnemy : BaseEnemy
         
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bottom")
@@ -40,7 +41,8 @@ public class FallingEnemy : BaseEnemy
 
         if (collision.gameObject.tag == "Bullet")
         {
-            Debug.Log("Bullet");
+            //Debug.Log("Bullet");
         }
     }
+    */
 }

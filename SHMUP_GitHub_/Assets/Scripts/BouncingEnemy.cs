@@ -28,7 +28,7 @@ public class BouncingEnemy : BaseEnemy
         transform.Translate(move * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private new void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "SideWall")
         {
