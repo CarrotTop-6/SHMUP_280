@@ -29,6 +29,7 @@ public class BaseEnemy : MonoBehaviour
             if(health <= 0)
             {
                 Debug.Log("Destroy");
+                Destroy(gameObject);
             }
         }
     }
