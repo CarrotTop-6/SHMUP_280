@@ -22,6 +22,7 @@ public class SpawnerEnemy : BaseEnemy
         if (collision.gameObject.tag == "SideWall")
         {
             speed *= -1;
+            //transform.Translate(new Vector2(transform.position.x, transform.position.y - 3));
         }
 
         if (collision.gameObject.tag == "Enemy")
