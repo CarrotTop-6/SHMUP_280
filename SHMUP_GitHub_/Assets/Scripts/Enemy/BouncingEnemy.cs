@@ -5,7 +5,7 @@ using UnityEngine;
 public class BouncingEnemy : BaseEnemy
 {
     private Vector2 move;
-
+    private float lastY;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,7 @@ public class BouncingEnemy : BaseEnemy
     //Needs to be fixed, collisions overrun each other
     protected void OnCollisionEnter(Collision other)
     {
+        base.OnCollisionEnter(other);
         if (other.gameObject.tag == "SideWall")
         {
             move.x *= -1;

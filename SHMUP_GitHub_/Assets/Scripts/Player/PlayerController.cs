@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void PerformAttack(InputAction.CallbackContext obj)
     {
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
         Instantiate(bullet, new Vector3(transform.position.x, transform.position.y+1, transform.position.z), Quaternion.identity);
     }
 

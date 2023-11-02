@@ -3,7 +3,14 @@ guid: 6ed81ec943695d04098609938e6d8e9e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rb: {instanceID: 0}
+  - blasterPU: {fileID: 6507949590160045092, guid: 500655a1b3f49524390fa62dc23aaa47,
+      type: 3}
+  - spreadPU: {fileID: 2260906072859613477, guid: 0c6caea18c3dbcf4999143558002e2da,
+      type: 3}
+  - shieldPU: {fileID: 1304120325781631008, guid: d91763e0746e60640858edcf9b917f53,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
