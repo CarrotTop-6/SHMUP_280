@@ -29,19 +29,4 @@ public class FallingEnemy : BaseEnemy
         speed = 10;
         
     }
-
-
-
-    //new void overrides old one
-
-    /*
-    private new void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Bottom")
-        {
-            Debug.Log("Bottom");
-            transform.position = new Vector3(transform.position.x, 18, 0);
-        }
-    }
-    */
 }

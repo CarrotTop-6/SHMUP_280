@@ -15,17 +15,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     Vector2 moveDirection = Vector2.zero;
     public float moveSpeed;
-
-    /*
     [SerializeField]
-    private PlayerControls move, shoot;
-    */
+    private InputActionReference attack;
 
     // Update is called once per frame
     void Update()
     {
         moveDirection = playerControls.ReadValue<Vector2>();
-        
     }
 
     private void FixedUpdate()
@@ -39,9 +35,16 @@ public class PlayerController : MonoBehaviour
     public void OnEnable()
     {
         playerControls.Enable();
+        attack.action.performed += PerformAttack;
     }
     public void OnDisable()
     {
         playerControls.Disable();
+        attack.action.performed -= PerformAttack;
+    }
+
+    private void PerformAttack(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Attack");
     }
 }

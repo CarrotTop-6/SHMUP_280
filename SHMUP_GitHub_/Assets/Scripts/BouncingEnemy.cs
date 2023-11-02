@@ -28,24 +28,18 @@ public class BouncingEnemy : BaseEnemy
         transform.Translate(move * speed * Time.deltaTime);
     }
 
-    private new void OnCollisionEnter(Collision collision)
+
+    //Needs to be fixed, collisions overrun each other
+    protected void OnCollisionEnter(Collision other)
     {
-        if (collision.gameObject.tag == "SideWall")
+        if (other.gameObject.tag == "SideWall")
         {
             move.x *= -1;
         }
 
-        if (collision.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
             move.x *= -1;
         }
-        
-        if (collision.gameObject.tag == "Bottom")
-        {
-            Debug.Log("Bottom");
-            transform.position = new Vector3(transform.position.x, 18, 0);
-        }
-
-
     }
 }

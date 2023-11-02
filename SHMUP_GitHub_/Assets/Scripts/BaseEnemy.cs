@@ -32,6 +32,12 @@ public class BaseEnemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        if (collision.gameObject.tag == "Bottom")
+        {
+            Debug.Log("Bottom");
+            transform.position = new Vector3(transform.position.x, 18, 0);
+        }
     }
 
 }
