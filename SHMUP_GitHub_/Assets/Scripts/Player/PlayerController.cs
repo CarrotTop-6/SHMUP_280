@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     Vector2 moveDirection = Vector2.zero;
     public float moveSpeed;
+    public GameObject bullet;
+
+
     [SerializeField]
     private InputActionReference attack;
 
@@ -46,5 +49,6 @@ public class PlayerController : MonoBehaviour
     private void PerformAttack(InputAction.CallbackContext obj)
     {
         Debug.Log("Attack");
+        Instantiate(bullet, new Vector3(transform.position.x, transform.position.y+1, transform.position.z), Quaternion.identity);
     }
 }

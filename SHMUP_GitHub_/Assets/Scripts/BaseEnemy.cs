@@ -8,17 +8,7 @@ public class BaseEnemy : MonoBehaviour
     public float health;
     public float powerupDropChance;
     public Rigidbody rb;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     protected void OnCollisionEnter(Collision collision)
     {
