@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection = Vector2.zero;
     public float moveSpeed;
     public GameObject bullet;
+    public int health;
 
 
     [SerializeField]
@@ -50,5 +51,28 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Attack");
         Instantiate(bullet, new Vector3(transform.position.x, transform.position.y+1, transform.position.z), Quaternion.identity);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            health -= 1;
+        }
+
+        if (collision.gameObject.tag == "Blaster")
+        {
+            Debug.Log("Blaster");
+        }
+
+        if (collision.gameObject.tag == "Spread")
+        {
+            Debug.Log("Spread");
+        }
+
+        if (collision.gameObject.tag == "Shield")
+        {
+            Debug.Log("Shield");
+        }
     }
 }

@@ -8,6 +8,10 @@ public class BaseEnemy : MonoBehaviour
     public float health;
     public float powerupDropChance;
     public Rigidbody rb;
+    public GameObject blasterPU;
+    public GameObject spreadPU;
+    public GameObject shieldPU;
+    public int spawnChance;
     
 
     protected void OnCollisionEnter(Collision collision)
