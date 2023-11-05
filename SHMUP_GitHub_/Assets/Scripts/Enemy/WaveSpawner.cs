@@ -87,8 +87,16 @@ public class WaveSpawner : MonoBehaviour
         }
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
+        StartCoroutine(NextWave());
+    }
+
+    IEnumerator NextWave()
+    {
+        yield return new WaitForSeconds(waveDuration + 5);
+        GenerateWave();
     }
 }
+
 
 
 [System.Serializable]

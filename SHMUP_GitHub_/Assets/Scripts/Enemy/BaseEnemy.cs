@@ -23,7 +23,7 @@ public class BaseEnemy : MonoBehaviour
             health = -1;
             if(health <= 0)
             {
-                spawnChance = Random.Range(0, 1);
+                spawnChance = Random.Range(0, 6);
                 Debug.Log(spawnChance);
                 if(spawnChance == 0)
                 {
