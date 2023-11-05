@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class BasePowerUp : MonoBehaviour
 {
+    public Rigidbody rb;
     protected int timer;
+    private int speed = 3;
+
     protected void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.tag == "Bottom")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        rb.velocity = new Vector2(0, -speed);
     }
 }
