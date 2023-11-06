@@ -5,8 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//
-//
+//Jack Bradford
+//Controls the player
 //10/24/23
 
 public class PlayerController : MonoBehaviour
@@ -27,21 +27,31 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private InputActionReference attack;
 
-    // Update is called once per frame
-    void Update()
+    //Sets this player as the singleton
+    public static PlayerController instance;
+    private void Awake()
     {
-        moveDirection = playerControls.ReadValue<Vector2>();
-        if (health <= 0)
-        {
-            Debug.Log("Dead");
-        }
+        instance = this;
     }
 
+    //If health above 0, get the players movement
+    void Update()
+    {
+        if (health > 0)
+        {
+            moveDirection = playerControls.ReadValue<Vector2>();
+        }
+
+        
+    }
+
+    //Move the player
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
+    //On Enable/Disable, every video I watched said its good to have these with new unity input but none said why
     public void OnEnable()
     {
         playerControls.Enable();
@@ -53,24 +63,31 @@ public class PlayerController : MonoBehaviour
         attack.action.performed -= PerformAttack;
     }
 
+
+    //Perform the player attack, and change projectile if they have a powerup
     private void PerformAttack(InputAction.CallbackContext obj)
     {
-        if(_playerAbility == PlayerEnum.None || _playerAbility == PlayerEnum.Shield)
+        if(health > 0)
         {
-            Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+            if (_playerAbility == PlayerEnum.None || _playerAbility == PlayerEnum.Shield)
+            {
+                Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+            }
+
+            if (_playerAbility == PlayerEnum.Blaster)
+            {
+                Instantiate(blaster, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
+            }
+
+            if (_playerAbility == PlayerEnum.Spread)
+            {
+                Instantiate(spread, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+            }
         }
         
-        if(_playerAbility == PlayerEnum.Blaster)
-        {
-            Instantiate(blaster, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
-        }
-
-        if (_playerAbility == PlayerEnum.Spread)
-        {
-            Instantiate(spread, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
-        }
     }
 
+    //Collisions
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Enemy")
@@ -104,6 +121,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Determine how long each powerup lasts for, and change the Enum of the player
     IEnumerator ShieldActivate()
     {
         shield.SetActive(true);

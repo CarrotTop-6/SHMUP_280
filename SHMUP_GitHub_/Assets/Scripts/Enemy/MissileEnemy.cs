@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Jack Bradford
+//Controls the missile enemy
+//11/3/23
 public class MissileEnemy : BaseEnemy
 {
     Vector2 moveDirection;
     Transform target;
 
-    // Start is called before the first frame update
+    // set the player as the target, and set the speed
     void Start()
     {
         speed = 15;
         target = GameObject.Find("Player").transform;
     }
 
-    // Update is called once per frame
+    //  Set the direction the player is in
     void Update()
     {
         if(target)
@@ -26,6 +29,7 @@ public class MissileEnemy : BaseEnemy
         }  
     }
 
+    //Move to the player
     private void FixedUpdate()
     {
         if(target)
@@ -34,6 +38,7 @@ public class MissileEnemy : BaseEnemy
         }
     }
 
+    //Collisions
     private void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);

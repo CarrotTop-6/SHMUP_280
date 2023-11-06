@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Resources;
 using UnityEngine;
 
+//Jack Bradford
+//Controls the Spawning Enemy
+//11/1/23
+
 public class SpawnerEnemy : BaseEnemy
 {
     public GameObject missileEnemy;
-    // Start is called before the first frame update
+    // Start the spawn interval timer
     void Start()
     {
         speed = 3;
@@ -14,7 +18,7 @@ public class SpawnerEnemy : BaseEnemy
         StartCoroutine(SpawnInterval());
     }
 
-    // Update is called once per frame
+    //  Movement
     void Update()
     {
         transform.Translate(new Vector2(speed, 0) * Time.deltaTime);
@@ -23,6 +27,7 @@ public class SpawnerEnemy : BaseEnemy
     private new void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
+        //if collides with a sideall or enemy, reverse movement
         if (collision.gameObject.tag == "SideWall")
         {
             speed *= -1;
@@ -36,12 +41,14 @@ public class SpawnerEnemy : BaseEnemy
         }
     }
 
+    //Missile spawner timer
     IEnumerator SpawnInterval()
     {
         yield return new WaitForSeconds(4);
         SpawnMissileEnemy();
     }
 
+    //Spawn missile enemy
     private void SpawnMissileEnemy()
     {
         Instantiate(missileEnemy, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);

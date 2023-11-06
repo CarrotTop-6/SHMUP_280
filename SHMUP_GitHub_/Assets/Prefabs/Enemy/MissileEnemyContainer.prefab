@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5787850425042075724}
   - component: {fileID: 7676354931361804835}
   - component: {fileID: 4203519918799798386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MissileEnemyContainer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -157,4 +157,3 @@ MonoBehaviour:
   shieldPU: {fileID: 1304120325781631008, guid: d91763e0746e60640858edcf9b917f53,
     type: 3}
   spawnChance: 0
-  Player: {fileID: 0}

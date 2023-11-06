@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Jack Bradford
+//Controls the bouncing enemy
+//11/30/23
+
 public class BouncingEnemy : BaseEnemy
 {
     private Vector2 move;
     private float lastY;
-    // Start is called before the first frame update
+
+    // Start the bounce in a random direction
     void Start()
     {
         speed = 5;
@@ -22,14 +27,14 @@ public class BouncingEnemy : BaseEnemy
         }
     }
 
-    // Update is called once per frame
+    // Move the set direction
     void Update()
     {
         transform.Translate(move * speed * Time.deltaTime);
     }
 
 
-    //Needs to be fixed, collisions overrun each other
+    //On collision, switch bounce direction
     protected void OnCollisionEnter(Collision other)
     {
         base.OnCollisionEnter(other);

@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
+//Jack Bradford
+//Controls the UI
+//11/4/23
 public class CanvasScript : MonoBehaviour
 {
-    public static CanvasScript instance { get; private set; }
+    public TMP_Text livesCounter;
+    public TMP_Text timer;
+    public int timerCounter = 5;
 
-    public float test;
-
-    private void Awake()
+    //Set the UI to the data needed
+    private void Update()
     {
-        if (instance != null && instance != this)
+        //displays lives
+        livesCounter.text = ("Lives: " + PlayerController.instance.health);
+        if(PlayerController.instance.health <= 0)
         {
-            Destroy(this);
+            timer.text = ("You Died Respawning shortly");
         }
         else
         {
-            instance = this;
+            //tells the player they died
+            timer.text = "";
         }
     }
 }

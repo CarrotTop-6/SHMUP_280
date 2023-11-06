@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
+//Jack Bradford
+//Controls the wave spawner
 //10/31/23
 //https://www.youtube.com/watch?v=7T-MTo8Uaio
 
@@ -27,6 +27,7 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if spawner on, start the round
         if(spawnerOn)
         {
             GenerateWave();
@@ -35,6 +36,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
+    //spawn in enemies from enemiesToSpawn list
     void FixedUpdate()
     {
         if(spawnTimer <= 0)
@@ -58,6 +60,7 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    //Generate the next wave
     public void GenerateWave()
     {
         waveValue = currentWave * 30;
@@ -67,6 +70,7 @@ public class WaveSpawner : MonoBehaviour
         waveTimer = waveDuration;
     }
 
+    //Generate the list of enemies for the next wave
     public void GenerateEnemies()
     {
         List<GameObject> generatedEnemies = new List<GameObject>();
@@ -82,14 +86,16 @@ public class WaveSpawner : MonoBehaviour
             }
             else if(waveValue<= 0)
             {
+                
                 break;
             }
-        }
+        } 
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
         StartCoroutine(NextWave());
     }
 
+    //After the last wave is all spawned in, start the next wave
     IEnumerator NextWave()
     {
         yield return new WaitForSeconds(waveDuration + 5);
@@ -98,7 +104,7 @@ public class WaveSpawner : MonoBehaviour
 }
 
 
-
+//Creating enemies to spawn
 [System.Serializable]
 public class Enemy
 {

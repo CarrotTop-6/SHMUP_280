@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Jack Bradford
+//Controls all the base data for all the enemys to inherit from 
+//10/29/23
 public class BaseEnemy : MonoBehaviour
 {
     public float speed;
@@ -14,9 +17,12 @@ public class BaseEnemy : MonoBehaviour
     public int spawnChance;
     private int powerUpToSpawn;
     
+    
 
+    //Collisions
     protected void OnCollisionEnter(Collision collision)
     {
+        //if collides wiht bullet, see if enemy should spawn a power up
         if (collision.gameObject.tag == "Bullet")
         {
             //Debug.Log("Bullet");
@@ -50,10 +56,17 @@ public class BaseEnemy : MonoBehaviour
             }
         }
 
+        //if collides with bottom, set position to top
         if (collision.gameObject.tag == "Bottom")
         {
             //Debug.Log("Bottom");
             transform.position = new Vector3(transform.position.x, 18, 0);
+        }
+
+        //if collides with player, destroy enemy
+        if(collision.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
         }
     }
 }
